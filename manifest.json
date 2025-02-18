@@ -1,0 +1,11 @@
+{
+  "id": "obsidian-prompt-cards",
+  "name": "Prompt Cards",
+  "version": "1.0.0",
+  "minAppVersion": "0.15.0",
+  "description": "管理和使用提示词卡片的 Obsidian 插件",
+  "author": "",
+  "isDesktopOnly": false,
+  "js": "main.js",
+  "css": "styles.css"
+} 

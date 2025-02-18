@@ -1,0 +1,291 @@
+.prompt-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.prompt-card {
+    background: var(--background-secondary);
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: grab;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    max-height: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+.prompt-card:active {
+    cursor: grabbing;
+}
+
+.prompt-card.dragging {
+    opacity: 0.5;
+    transform: scale(1.02);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.prompt-card.drag-over {
+    border: 2px dashed var(--interactive-accent);
+    transform: scale(1.02);
+}
+
+.prompt-card.drag-over * {
+    pointer-events: none;
+}
+
+/* 卡片内容区域 */
+.prompt-card-content {
+    flex: 1;
+    overflow-y: auto;  /* 添加垂直滚动 */
+    padding-right: 8px;  /* 为滚动条留出空间 */
+}
+
+/* 自定义滚动条样式 */
+.prompt-card-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.prompt-card-content::-webkit-scrollbar-track {
+    background: var(--background-secondary);
+    border-radius: 3px;
+}
+
+.prompt-card-content::-webkit-scrollbar-thumb {
+    background: var(--background-modifier-border);
+    border-radius: 3px;
+}
+
+.prompt-card-content::-webkit-scrollbar-thumb:hover {
+    background: var(--background-modifier-border-hover);
+}
+
+.prompt-card h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1em;
+}
+
+.prompt-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.prompt-tag {
+    background: var(--interactive-accent);
+    color: var(--text-on-accent);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8em;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.prompt-tag:hover {
+    transform: scale(1.05);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.prompt-buttons {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    position: sticky;
+    bottom: 0;
+    background: var(--background-secondary);
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--background-modifier-border);
+}
+
+.prompt-search-container {
+    margin: 1rem;
+    display: flex;
+    gap: 1rem;
+    background: var(--background-primary);
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.prompt-search-input {
+    flex: 1;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid var(--background-modifier-border);
+    background: var(--background-primary);
+}
+
+.prompt-tag-select {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid var(--background-modifier-border);
+    background: var(--background-primary);
+}
+
+.prompt-modal-content {
+    margin-bottom: 2rem;
+}
+
+.prompt-modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+/* 添加新卡片按钮样式 */
+button.add-prompt-button {
+    background-color: #a388ee;  /* 淡紫色背景 */
+    color: white;  /* 白色文字 */
+    font-weight: bold;  /* 粗体文字 */
+    padding: 8px 16px;  /* 内边距 */
+    border: none;  /* 移除边框 */
+    border-radius: 6px;  /* 圆角 */
+    cursor: pointer;  /* 鼠标指针样式 */
+    margin: 1rem 0;  /* 上下外边距 */
+    transition: background-color 0.2s ease;  /* 平滑过渡效果 */
+}
+
+button.add-prompt-button:hover {
+    background-color: #8a6cd4;  /* 悬停时深一点的紫色 */
+}
+
+/* 标题样式 */
+.prompt-title {
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: 600;
+    color: var(--text-normal);
+    margin: 1rem 0;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--background-modifier-border);
+}
+
+/* 标签页容器 */
+.prompt-tabs {
+    display: flex;
+    gap: 1.5rem;
+    padding: 0 1rem;
+    border-bottom: 1px solid var(--background-modifier-border);
+    margin-bottom: 1rem;
+    background: var(--background-primary);
+}
+
+/* 标签页 */
+.prompt-tab {
+    padding: 0.75rem 0.5rem;
+    cursor: pointer;
+    position: relative;
+    color: var(--text-muted);
+    font-size: 0.95em;
+    letter-spacing: 0.3px;
+    transition: color 0.2s ease;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+}
+
+.prompt-tab:hover {
+    color: var(--text-normal);
+    background-color: var(--background-modifier-hover);
+}
+
+.prompt-tab.active {
+    color: var(--text-accent);
+    font-weight: 500;
+    border-bottom-color: var(--text-accent);
+}
+
+.sync-buttons-container {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin: 1rem 0;
+}
+
+.sync-button {
+    background-color: var(--interactive-accent);
+    color: var(--text-on-accent);
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+}
+
+.sync-button:hover {
+    background-color: var(--interactive-accent-hover);
+}
+
+/* 设置页面样式 */
+.prompt-cards-settings {
+    padding: 1rem;
+}
+
+.prompt-cards-settings .setting-item {
+    border-top: 1px solid var(--background-modifier-border);
+    padding: 1rem 0;
+}
+
+.prompt-cards-settings .setting-item:last-child {
+    border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.prompt-cards-settings .setting-item-control button {
+    background-color: var(--interactive-accent);
+    color: var(--text-on-accent);
+    padding: 8px 16px;
+    border-radius: 4px;
+}
+
+.prompt-content-preview {
+    max-height: 80px;
+    overflow: hidden;
+    position: relative;
+    margin: 0.5rem 0;
+    line-height: 1.5;
+    color: var(--text-muted);
+}
+
+.prompt-content-tooltip {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--background-primary);
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    max-height: 300px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    border: 1px solid var(--background-modifier-border);
+}
+
+.prompt-card:hover .prompt-content-tooltip {
+    display: block;
+}
+
+.prompt-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    border-color: var(--interactive-accent);
+}
+
+.reset-search-button {
+    padding: 8px 16px;
+    border-radius: 4px;
+    border: 1px solid var(--background-modifier-border);
+    background: var(--background-primary);
+    color: var(--text-normal);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.reset-search-button:hover {
+    background: var(--background-modifier-hover);
+} 
